@@ -1,0 +1,429 @@
+/**
+ *Estilos predefinidos
+ */
+h1,h2,h3,p,a,label,input,textarea,span,select,button{
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+    text-decoration: none;
+}
+.title{font-size: 32px;}
+.fs-18,p{font-size: 18px;}
+.fs-20,a,label{font-size: 20px;}
+.fs-25{font-size: 25px;}
+.textWhite{color: white;}
+footer, header, .marcoImg,#testResults h2, form h2,#accesibilityMenuTittle,#progressContent,button,input[type="button"]{background-color: #2158cb;}
+a:hover{text-decoration: underline;}
+svg{display: none;}
+ul{list-style: none;
+    padding: 0;
+}
+
+/*Filtros daltonismo*/
+
+.deuteranopiaMode{filter: url(#deuteranopia);}
+.tritanopiaMode{filter: url(#tritanopia);}
+.protanopiaMode{filter: url(#protanopia);}
+
+/**
+ *Cabecera
+ */
+
+header{
+    width: 100%;
+    height: 80px;
+    float: left;
+    display: flex;
+    justify-content: center;
+}
+#logo{
+    width: auto;
+    height: 80px;
+}
+#menu{
+    width: auto;
+    height: 80px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+#menu ul{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+#menu ul li{
+    display: inline;
+    margin: 0 20px;
+}
+#menu ul li a{font-weight: 600;}
+#mobileMenuIcon{
+    height: 40px;
+    width: 32px;
+    margin: 0px 10px;
+    display: none;
+}
+#menuContainer{
+    display: flex;
+    justify-content: flex-start;
+    width: auto;
+}
+/**
+ *Contenido index
+ */
+
+#container{
+    width: 100%;
+    min-height: 700px;
+    display: flex;
+    justify-content: center;
+}
+#content, #contactContent{
+    height: auto;
+    width: 1200px;
+    margin: 10px 0px;
+}
+#causasDaltonismo ul{list-style: disc;margin-left:25px}
+#contactContent{
+    display: flex;
+    justify-content: space-between;
+    margin: 25px 0px;
+}
+/*Contenedor imagenes*/
+.marcoImg{
+    width: 360px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 10px 0px 10px 10px;
+    float: right;
+    overflow: hidden;
+    border-radius: 10px;
+}
+.marcoImg p{
+    margin: 10px;
+    text-align: center;
+    font-weight: 600;
+}
+
+/**
+ *Contenido test
+ */
+
+#testContainerFluid,#formContainer{
+    width: 100%;
+    float: left;
+    display: flex;
+    justify-content:center ;
+    margin: 10px 0px;
+}
+#testContainer{
+    height: auto;
+    width: 600px;
+    border: 2px solid #2158cb;
+    border-radius: 5px;
+    overflow: hidden;
+}
+#imgTestcontainer{
+    height: 500px;
+    width: 600px;
+    float: left;
+    display: flex;
+    justify-content: center;
+    border-bottom: 2px solid #2158cb;
+}
+#infoTest{
+    height: 100px;
+    width: 600px;
+    float: left;
+    display: flex;
+    justify-content: center;
+    padding: 20px 0px;
+    align-items: center;
+    flex-direction: column;
+}
+#infoTest h2, #answerTest{text-align: center;}
+#nQuestionContainer{
+    height: 50px;
+    width: 600px;
+    float: left;
+}
+#nQuestionContainer p{
+    float: right;
+    margin-right: 10px;
+}
+button,input[type="button"]{
+    width: 100px;
+    color: white;
+    font-size: 18px;
+    border: none;
+    margin:10px;
+    padding: 5px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.button:hover,input[type="button"]:hover{transform: scale(1.1);}
+textarea{resize: none;}
+#testResults{
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+#testResults h2{
+    padding: 5px 60px;
+    border-radius: 10px;
+}
+
+/**
+ *Contenido contacto
+ */
+
+form{
+    width: 400px;
+    border: 2px solid #2158cb;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 10px;
+}
+form input, form select, form textarea{
+    width: 250px;
+    font-size: 20px;
+    border: 2px solid black;
+}
+form h2{
+    width: 100%;
+    margin-top: 0;
+    padding: 10px 0px;
+    text-align: center;
+}
+.inputContainer, .errorContainer{
+    display: flex;
+    align-items: center;
+    margin: 10px 0px;
+}
+.errorContainer{display: none;}
+.errorContainer span{
+    color: red;
+    font-size: 18px;
+}
+.errorContainer img{margin-right:5px ;}
+.inputContainer img{
+    height: 29px;
+    width: 29px;
+    margin-right: 5px;
+}
+
+#contactInfoContainer{
+    height: auto;
+    width: 100%;
+    float: left;
+    display: flex;
+    justify-content: space-between;
+}
+#infoContact{
+    height: 454px;
+    width: 500px;
+    background-color: red;
+}
+
+/**
+ * Pie de pagina
+ */
+
+footer{
+     height: auto;
+     width: 100%;
+     float: left;
+     display: flex;
+     justify-content: space-around;
+}
+footer div{
+    height: 100%;
+    width: 30%;
+}
+footer div h3{margin-bottom: 30px;}
+#redes img {
+    margin-right: 20px;
+    cursor: pointer;
+}
+#redes img:hover{transform: scale(1.1);}
+footer div ul li .inputContainer{width: 100%;}
+
+/**
+ * Menu accesibilidad
+ */
+#accesibilityIcon{
+    height: 50px;
+    width: 50px;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    left: 85%;
+    top: 85%;
+    border-radius: 100%;
+    background-color: rgba(0, 0, 0, 0.658);
+}
+#accesibilityMenu{
+    height:250px;
+    width: 250px;
+    position: fixed;
+    left: 85%;
+    top: 50%;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+#accesibilityMenuTittle h3{
+    text-align: center;
+    margin: 0;
+}
+#accesibilityMenuTittle{
+    padding: 10px;
+    border-bottom: 1px solid black;
+}
+#accesibilityMenuContent{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#fontBar{
+    width: 90%;
+    display: flex;
+    border: 1px solid black;
+}
+
+#progressBar{
+    width: 85%;
+    background-color: rgb(236, 236, 236);
+}
+#progressContent{height: 100%;}
+.progressContent-25{width: 25%;}
+.progressContent-50{width: 50%;}
+.progressContent-75{width: 75%;}
+.progressContent-100{width: 100%;}
+.simbol{
+    width: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    cursor: pointer;
+}
+#accesibilityMenuContent button{display: none;}
+
+
+
+/**
+ *Responsive
+ */
+
+ @media (max-width: 1800px) {
+    #content, #contactContent {width: 1000px;}
+    #accesibilityMenu{left: 83%;}
+    #map iframe{width: 450px;}
+  }
+  @media (max-width: 1400px) {
+    #content, #contactContent {width: 900px;}
+    #accesibilityMenu{width: 170px;left: 85%;}
+    #map iframe{width: 400px;}
+  }
+  @media (max-width: 800px) {
+    #cabecera{
+        height: 40px;
+        justify-content: space-between;
+        flex-direction: column;
+        transition: all 0.3s linear;
+    }
+    #logo{height: 40px; width: 50px;}
+    #logo img{height: 40px;}
+    #menu{
+        overflow: hidden;
+        height: 40px;
+        background-color: #2158cb;
+        float:left;
+        align-self: flex-start;
+        width: 100%;
+    }
+    #menu ul{
+        height: 40px;
+        width: 100%;
+        
+    }
+    .fs-25{font-size: 18px;}
+    .fs-20{font-size: 14px;}
+    .title{font-size: 24px;text-align:center;}
+    a,p{font-size: 14px;}
+    .marcoImg{float: left;}
+    .inputContainer img{
+        height: 16px;
+        width: 16px;
+    }
+    #redes img{
+        margin: 5px;
+        height: 24px;
+        width: 24px;
+    }
+    #mobileMenuIcon{
+        display: flex;
+        align-items: center;
+    }
+    #testContainer, #testResults{
+        width: 100%;
+        height: 410px;
+    }
+    #infoTest{
+        height: 60px;
+        width: 100%;
+    }
+    #imgTest, #imgTestcontainer{
+        width: 300px;
+        height: 300px;
+    }
+    #imgTestcontainer{width: 100%;}
+    #content h2{text-align: center;}
+    #footer div ul li p{margin:0px}
+    #footer{
+        flex-direction: column;
+        align-items: center;
+        overflow: hidden;
+    }
+    #footer div{
+        width: 100%;
+        margin-left: 20px;
+    }
+    #content, #contactContent {width: 100%;}
+    #contactContent{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    p,#container li{margin: 0px 20px;}
+    #container li p{margin: 0;}
+    form{
+        width: 285px;
+        margin-bottom: 10px;
+    }
+    #accesibilityMenuContent button{display: initial;}
+    #accesibilityMenuContent p{
+        font-size: 16px;
+        margin: 10px 0px;
+    }
+    #fontBar{display:none;}
+    #accesibilityMenuTittle h3{font-size: 16px;}
+    #accesibilityMenuContent p:last-of-type{display: none;}
+    #accesibilityMenuContent button{font-size: 16px;}
+    #accesibilityMenu{
+        left:50%;
+        top: 70%;
+        height: 150px;
+    }
+    #daltonismOption{font-size: 14px;}
+    #map iframe{width: 285px;height: 200px;}
+  }
+
+.displayOn{display: initial;}
+.displayOnIcon{display: flex;}
+.displayOff{display: none;}

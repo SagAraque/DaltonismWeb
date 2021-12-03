@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daltonismo - Contacto</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+    <header id="cabecera" class="Normal">
+        <div id="menuContainer">
+            <div id="mobileMenuIcon" onclick="mobileMenu()"><img src="img/lista.png" alt=""></div>
+            <div id="logo"><a href="index.html"><img src="img/logo.png" alt=""></a></div>
+        </div>
+        <nav id="menu">
+            <ul>
+                <li>
+                    <div class="inputContainer">
+                        <img src="img/casa.png" alt="Icono blanco casa">
+                        <a href="index.html" class="textWhite fs-25">Inicio</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="inputContainer">
+                        <img src="img/examen.png" alt="Icono blanco examen">
+                        <a href="test.html" class="textWhite fs-25">Test</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="inputContainer">
+                        <img src="img/contacto.png" alt="Icono blanco teleoperador">
+                        <a href="contacto.html" class="textWhite fs-25">Contacto</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <div id="container" class="Normal">
+        <section id="contactContent">
+                <form action="">
+                    <h2 class="textWhite">Formulario de contacto</h2>
+                    <div class="inputContainer">
+                        <img src="img/usuario.png" alt="Icono de una persona">
+                        <label for="">Nombre</label>
+                    </div>
+                    <input type="text" id="name">
+                    <div class="errorContainer">
+                        <img src="img/cruz.png" alt="Icono de una equis roja">
+                        <span>Error: Nombre no valido</span>
+                    </div>
+
+                    <div class="inputContainer">
+                        <img src="img/telefono.png" alt="Icono de un telefono">
+                        <label for="">Teléfono</label>         
+                    </div>
+                    <input type="text" placeholder="123456789" id="tlf"> 
+                    <div class="errorContainer">
+                        <img src="img/cruz.png" alt="Icono de una equis roja">
+                        <span>Error: Teléfono no valido</span>
+                    </div>
+
+                    <div class="inputContainer">
+                        <img src="img/email.png" alt="Icono de un sobre">
+                        <label for="">Email</label>
+                    </div>
+                    <input type="text" placeholder="usuario@gmail.es" id="email">
+                    <div class="errorContainer">
+                        <img src="img/cruz.png" alt="Icono de una equis roja">
+                        <span>Error: Email no valido</span>
+                    </div>
+
+                    <div class="inputContainer">
+                        <img src="img/ojo.png" alt="Icono de un ojo">
+                        <label for="">¿Padeces daltonismo?</label>
+                    </div>
+                    <select id="daltonismSelect">
+                        <option value="none">No padezco</option>
+                        <option value="deuteranopia">Deuteranopia</option>
+                        <option value="protanopia">Protanopia</option>
+                        <option value="tritanopia">Tritanopia</option>
+                    </select>
+
+                    <div class="inputContainer">
+                        <img src="img/boligrafo.png" alt="Icono de un lapicero">
+                        <label for="">Mensaje</label>
+                    </div>
+                    <textarea id="textarea" cols="30" rows="10" placeholder="Escribe aqui tu mensaje..." maxlength="255"></textarea>
+                    <div class="errorContainer">
+                        <img src="img/cruz.png" alt="Icono de una equis roja">
+                        <span>Error: Mensaje no valido</span>
+                    </div>
+                    <input type="button" value="Enviar" onclick="formCheck()">
+                </form>
+                <article id="map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3040.876081246551!2d-3.851442084302275!3d40.345094867916565!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd418e948c400001%3A0x65ea604ecde95f6c!2sCDM%20Parque%20Oeste!5e0!3m2!1ses!2ses!4v1636308292840!5m2!1ses!2ses" width="700" height="750" style="border:0;" allowfullscreen="" loading="lazy"></iframe>        
+                </article>
+    </div>
+    <div id="accesibilityIcon" class="displayOff" onclick="showAccesibilityMenu()"><img src="img/accesibilidad.png" alt=""></div>
+    <div id="accesibilityMenu" class="Normal">
+        <div id="accesibilityMenuTittle">
+            <h3 class="textWhite">Accesibilidad</h3>
+        </div>
+        <div id="accesibilityMenuContent">
+            <p>Daltonismo</p>
+            <select class="fs-18" id="daltonismOption" onchange="changeDaltonismMode()">
+                <option value="Normal">Normal</option>
+                <option value="Deuteranopia">Deuteranopia</option>
+                <option value="Protanopia">Protanopia</option>
+                <option value="Tritanopia">Tritanopia</option>
+            </select>
+            <p>Tamaño de la letra</p>
+            <div id="fontBar">
+                <div class="simbol fs-20" onclick="changeFontSize('-')"><span>-</span></div>
+                <div id="progressBar">
+                    <div id="progressContent" class="progressContent-25">
+                    </div>
+                </div>
+                <div class="simbol fs-20" onclick="changeFontSize('+')"><span>+</span></div>
+            </div>
+            <button onclick="hiddeAccesibilityMenu()">Cerrar</button>
+        </div> 
+    </div>
+    <footer id="footer" class="Normal">
+        <div id="mapaWeb">
+            <h3 class="textWhite fs-25">Mapa web</h3>
+            <ul>
+                <li>
+                    <div class="inputContainer">
+                        <img src="img/casa.png" alt="Icono blanco de una casa">
+                        <a href="index.html" class="textWhite fs-20">Inicio</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="inputContainer">
+                        <img src="img/examen.png" alt="Icono blanco de un examen">
+                        <a href="test.html" class="textWhite fs-20">Test de daltonismo</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="inputContainer">
+                        <img src="img/contacto.png" alt="Icono blanco de una teleoperadora">
+                        <a href="contacto.html" class="textWhite fs-20">Formulario de contacto</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div id="redes">
+            <h3 class="textWhite fs-25">Siguenos en redes sociales</h3>
+            <img src="img/instagram.png" alt="Icono blanco de instagram">
+            <img src="img/facebook.png" alt="Icono blanco de facebook">
+            <img src="img/twitter.png" alt="Icono blanco de twitter">      
+        </div>
+        <div id="contacto">
+            <h3 class="textWhite fs-25">Contacta con nosotros</h3>
+            <ul>
+                <li>
+                    <p class="textWhite fs-20">C/Estambull Nº24, 28922 Alcorcón, Madrid</p>
+                </li>
+                <li>
+                    <p class="textWhite fs-20">Tel: 695123295</p>
+                </li>
+                <li>
+                    <p class="textWhite fs-20">Email: daltonismo@info.es</p>
+                </li>
+            </ul>
+        </div>
+    </footer>
+
+    <!--Matrices de colores para filtros de daltonismo-->
+    <svg id="svg-filter">
+        <filter id="deuteranopia">
+            <feColorMatrix values="
+            0.567322	0.860646	-0.227968  0.000000  0.000000
+            0.280085	0.672501	0.047413   0.000000  0.000000
+            -0.011820	0.042940	0.968881   0.000000  0.000000
+            0.000000    0.000000    0.000000   1.000000  0.000000" />
+        </filter>
+      </svg>
+      <svg id="svg-filter">
+        <filter id="protanopia">
+            <feColorMatrix values="
+            0.152286	1.052583	-0.204868  0.000000  0.000000
+            0.114503	0.786281	0.099216   0.000000  0.000000
+            -0.003882	-0.048116	1.051998   0.000000  0.000000
+            0.000000    0.000000    0.000000   1.000000  0.000000" />
+        </filter>
+      </svg>
+      <svg id="svg-filter">
+        <filter id="tritanopia">
+            <feColorMatrix values="
+            1.255528	-0.076749	-0.178779  0.000  0.000
+            -0.078411	0.930809	0.147602   0.000  0.000
+            0.004733	0.691367	0.303900   0.000  0.000
+            0.000  0.000  0.000  1.000  0.000" />
+        </filter>
+      </svg>
+    <script src="js/javascript.js"></script>
+</body>
+
+</html>
