@@ -4,11 +4,16 @@ if(sessionStorage.getItem('daltonism')!=null){
 
 function changeDaltonismMode(storageDaltonismValue){
     let option;
-    if(storageDaltonismValue==null){
-        option=document.getElementById('daltonismOption').value;
+    let daltonismOption=document.querySelector('#daltonismOption');
+    let container=document.querySelector('#container');
+    let header=document.querySelector('#cabecera');
+    let footer=document.querySelector('#footer');
+    let accesibilityMenu=document.querySelector('#accesibilityMenu');
+    if(storageDaltonismValue===null){
+        option=daltonismOption.value;
     }else{
         option=storageDaltonismValue;
-        document.getElementById('daltonismOption').value=option;
+        daltonismOption.value=option;
     }
     let daltonismMod=['tritanopiaMode','deuteranopiaMode','protanopiaMode','Normal'];
     let daltonismClass;
@@ -19,177 +24,132 @@ function changeDaltonismMode(storageDaltonismValue){
     }
     switch (option){
         case "Normal":
-            document.getElementById("container").classList.replace(daltonismClass,"Normal");
-            document.getElementById("cabecera").classList.replace(daltonismClass,"Normal");
-            document.getElementById("footer").classList.replace(daltonismClass,"Normal");
-            document.getElementById("accesibilityMenu").classList.replace(daltonismClass,"Normal");
+            container.classList.replace(daltonismClass,"Normal");
+            header.classList.replace(daltonismClass,"Normal");
+            footer.classList.replace(daltonismClass,"Normal");
+            accesibilityMenu.classList.replace(daltonismClass,"Normal");
             break;
         case "Deuteranopia":
-            document.getElementById("container").classList.replace(daltonismClass,"deuteranopiaMode");
-            document.getElementById("cabecera").classList.replace(daltonismClass,"deuteranopiaMode");
-            document.getElementById("footer").classList.replace(daltonismClass,"deuteranopiaMode");
-            document.getElementById("accesibilityMenu").classList.replace(daltonismClass,"deuteranopiaMode");
+            container.classList.replace(daltonismClass,"deuteranopiaMode");
+            header.classList.replace(daltonismClass,"deuteranopiaMode");
+            footer.classList.replace(daltonismClass,"deuteranopiaMode");
+            accesibilityMenu.classList.replace(daltonismClass,"deuteranopiaMode");
             break;
         case "Tritanopia":
-            document.getElementById("container").classList.replace(daltonismClass,"tritanopiaMode");
-            document.getElementById("cabecera").classList.replace(daltonismClass,"tritanopiaMode");
-            document.getElementById("footer").classList.replace(daltonismClass,"tritanopiaMode");
-            document.getElementById("accesibilityMenu").classList.replace(daltonismClass,"tritanopiaMode");
+            container.classList.replace(daltonismClass,"tritanopiaMode");
+            header.classList.replace(daltonismClass,"tritanopiaMode");
+            footer.classList.replace(daltonismClass,"tritanopiaMode");
+            accesibilityMenu.classList.replace(daltonismClass,"tritanopiaMode");
             break;
         case "Protanopia":
-            document.getElementById("container").classList.replace(daltonismClass,"protanopiaMode");
-            document.getElementById("cabecera").classList.replace(daltonismClass,"protanopiaMode");
-            document.getElementById("footer").classList.replace(daltonismClass,"protanopiaMode");
-            document.getElementById("accesibilityMenu").classList.replace(daltonismClass,"protanopiaMode");
+            container.classList.replace(daltonismClass,"protanopiaMode");
+            header.classList.replace(daltonismClass,"protanopiaMode");
+            footer.classList.replace(daltonismClass,"protanopiaMode");
+            accesibilityMenu.classList.replace(daltonismClass,"protanopiaMode");
             break;
     }
     sessionStorage.setItem('daltonism',option);
 }
 
-let cont=0;
-let fontSizeP=18;
-let fontSizeH=32;
-let fontSizeL=20;
-function changeFontSize(simbol){
-    let progressBar=document.getElementById("progressContent");
-    let porcent=["progressContent-25","progressContent-50","progressContent-75","progressContent-100"];
-    let width=progressBar.className;
-    let container=document.getElementById("container");
-    let parrafos=container.getElementsByTagName("p");
-    let titulos=container.getElementsByTagName("h2");
-    let labels=container.getElementsByTagName("label");
 
-    if(simbol=="+"){
-        if(width!=porcent[3]){
-            cont++;
-            fontSizeP++;
-            fontSizeH++;
-            fontSizeL++;
-            progressBar.classList.replace(width,porcent[cont]);
-            for(let i=0;i<parrafos.length;i++){
-                parrafos[i].style.fontSize=fontSizeP+'px';
-            }
-            for(let x=0;x<titulos.length;x++){
-                titulos[x].style.fontSize=fontSizeH+'px';
-            } 
-            for(let z=0;z<labels.length;z++){
-                labels[z].style.fontSize=fontSizeL+'px';
-            } 
+function changeFontSize(simbol){
+    let progressBar=document.querySelector("#progressContent");
+    let progresBarPorcent=["progressContent-25","progressContent-50","progressContent-75","progressContent-100"];
+    let progresBarWith=progressBar.className;
+    let container=document.querySelector("#container");
+    let texts=container.querySelectorAll("[size='change']");
+    let aux=0;
+    if(simbol==="+"){
+        if(progresBarWith!=progresBarPorcent[3]){
+            aux=1;
+            progressBar.classList.replace(progresBarWith,progresBarPorcent[progresBarPorcent.indexOf(progresBarWith)+1]); 
         }
-    }else if(simbol=="-"){
-        if(width!=porcent[0]){
-            cont--;
-            fontSizeP--;
-            fontSizeH--;
-            fontSizeL--;
-            progressBar.classList.replace(width,porcent[cont]); 
-            for(let i=0;i<parrafos.length;i++){
-                parrafos[i].style.fontSize=fontSizeP+'px';
-            }
-            for(let x=0;x<titulos.length;x++){
-                titulos[x].style.fontSize=fontSizeH+'px';
-            } 
-            for(let z=0;z<labels.length;z++){
-                labels[z].style.fontSize=fontSizeL+'px';
-            } 
+    }else if(simbol==="-"){
+        if(progresBarWith!=progresBarPorcent[0]){
+            aux=-1;
+            progressBar.classList.replace(progresBarWith,progresBarPorcent[progresBarPorcent.indexOf(progresBarWith)-1]);
         }
     }
+    texts.forEach(element => {
+        let font=window.getComputedStyle(element).fontSize;
+        font=parseInt(font.substr(0,font.length-2));
+        element.style.fontSize=(font+aux)+'px';
+    });
 }
 
 let score=0;
 let testCount=0;
 function test(){
     let answers=[8,12,74,16,2,6,29,7,45,5];
-    let userAnswer=document.getElementById("answerTest").value;
-    document.getElementById("answerTest").value="";
-    if(answers[testCount]==userAnswer){
-        score++;
-    }
+    let userAnswer=document.querySelector("#answerTest").value;
+    userAnswer.value="";
+    if(answers[testCount]==userAnswer) score++;
     testCount++;
     if(testCount!=10){
-        document.getElementById("imgTest").src="img/test"+(testCount+1)+".jpg"    
-        document.getElementById("nQuestion").innerText=(testCount+1);
+        document.querySelector('#imgTest').setAttribute('src','img/test'+(testCount+1)+'.jpg');    
+        document.querySelector("#nQuestion").innerText=(testCount+1);
     }else{
         endTest();
     }
-    
 }
+
 function endTest(){
-    document.getElementById("imgTestcontainer").style.display="none";
-    document.getElementById("infoTest").style.display="none";
-    document.getElementById("nQuestionContainer").style.display="none";
-    document.getElementById("testResults").style.display="flex";
-    document.getElementById("result").innerText=score;
+    document.querySelector("#imgTestcontainer").style.display="none";
+    document.querySelector("#infoTest").style.display="none";
+    document.querySelector("#nQuestionContainer").style.display="none";
+    document.querySelector("#testResults").style.display="flex";
+    document.querySelector("#result").innerText=score;
     if(score>=0 && score<5){
-        document.getElementById("infoResult").innerText="Padeces algún tipo de daltonismo severo";
+        document.querySelector("#infoResult").innerText="Padeces algún tipo de daltonismo severo";
     }else if(score>=5 && score<=7){
-        document.getElementById("infoResult").innerText="Padeces algún tipo de daltonismo leve";
+        document.querySelector("#infoResult").innerText="Padeces algún tipo de daltonismo leve";
     }else{
-        document.getElementById("infoResult").innerText="¡Enhorabuena! Tienes una vista perfecta";
+        document.querySelector("#infoResult").innerText="¡Enhorabuena! Tienes una vista perfecta";
     }
 }
 
 function restartTest(){
-    document.getElementById("imgTestcontainer").style.display="flex";
-    document.getElementById("infoTest").style.display="flex";
-    document.getElementById("nQuestionContainer").style.display="block";
-    document.getElementById("testResults").style.display="none";
+    document.querySelector("#imgTestcontainer").style.display="flex";
+    document.querySelector("#infoTest").style.display="flex";
+    document.querySelector("#nQuestionContainer").style.display="block";
+    document.querySelector("#testResults").style.display="none";
     score=0;
     testCount=0;
-    document.getElementById("imgTest").src="img/test1.jpg"  
+    document.querySelector('#imgTest').setAttribute('src','img/test1.jpg');   
 }
 
 function formCheck(){
-    let tlf=document.getElementById("tlf").value;
-    let name=document.getElementById("name").value;
-    let email=document.getElementById("email").value;
-    let textarea=document.getElementById("textarea").value;
-    let error=document.getElementsByClassName("errorContainer");
+    let tlf=document.querySelector("#tlf").value;
+    let name=document.querySelector("#name").value;
+    let email=document.querySelector("#email").value;
+    let textarea=document.querySelector("#textarea").value;
+    let error=document.querySelectorAll(".errorContainer");
     let regex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 
-    if(tlf=="" || tlf.length!=9 || isNaN(tlf)){
-        error[1].style.display="flex";
-    }else{
-        error[1].style.display="none";
-    }
-
-    if(name==""){
-        error[0].style.display="flex";
-    }else{
-        error[0].style.display="none";
-    }
-    console.log(regex.test(email)==false)
-    if(regex.test(email)==false){
-        error[2].style.display="flex";
-    }else{
-        error[2].style.display="none";
-    }
-
-    if(textarea==""){
-        error[3].style.display="flex";
-    }else{
-        error[3].style.display="none";
-    }
+    error[0].style.display=(name==='' ? 'flex' : 'none');
+    error[1].style.display=(tlf==="" || tlf.length!=9 || isNaN(tlf) ? 'flex' : 'none');
+    error[2].style.display=(regex.test(email)===false ? 'flex' : 'none');;
+    error[3].style.display=(textarea==='' ? 'flex' : 'none');
 }
 
 function mobileMenu(){
-    if(document.getElementById('cabecera').style.height=='80px'){
-        document.getElementById('cabecera').style.height='40px';
+    if(document.querySelector('#cabecera').style.height=='80px'){
+        document.querySelector('#cabecera').style.height='40px';
     }else{
-        document.getElementById('cabecera').style.height='80px';
+        document.querySelector('#cabecera').style.height='80px';
     }
     
 }
 
 if(screen.width<=800){
-    document.getElementById('accesibilityMenu').classList.add('displayOff');
-    document.getElementById('accesibilityIcon').classList.replace('displayOff','displayOnIcon');
+    document.querySelector('#accesibilityMenu').classList.add('displayOff');
+    document.querySelector('#accesibilityIcon').classList.replace('displayOff','displayOnIcon');
 }
 function showAccesibilityMenu(){
-    document.getElementById('accesibilityMenu').classList.replace('displayOff','displayOn');
-    document.getElementById('accesibilityIcon').classList.replace('displayOnIcon','displayOff');
+    document.querySelector('#accesibilityMenu').classList.replace('displayOff','displayOn');
+    document.querySelector('#accesibilityIcon').classList.replace('displayOnIcon','displayOff');
 }
 function hiddeAccesibilityMenu(){
-    document.getElementById('accesibilityMenu').classList.replace('displayOn','displayOff');
-    document.getElementById('accesibilityIcon').classList.replace('displayOff','displayOnIcon');
+    document.querySelector('#accesibilityMenu').classList.replace('displayOn','displayOff');
+    document.querySelector('#accesibilityIcon').classList.replace('displayOff','displayOnIcon');
 }
